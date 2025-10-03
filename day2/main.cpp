@@ -23,7 +23,6 @@ void get_numbers(const string & line, vector<int> & nums) {
 bool is_safe(const vector<int> & arr) {
 
   bool ascending = arr[0] < arr[1];
-  bool mistake = false;
   for (int i = 0; i < arr.size()-1; i++) {
     
     int curr = arr[i];
