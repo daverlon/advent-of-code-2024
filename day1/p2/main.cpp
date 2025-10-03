@@ -27,12 +27,19 @@ int calculate_similarity(vector<int> & arr1, vector<int> & arr2) {
   int l1 = arr1.size();
   int l2 = arr2.size();
 
+  int pos = 0;
+
   for (int i = 0; i < l1; i++) {
     int apps = 0;
     int n1 = arr1[i];
-    for (int j = 0; j < l2; j++) {
-      if (arr2[j] == n1)
+    for (int j = pos; j < l2; j++) {
+      if (arr2[j] > n1)
+        break;
+      else if (arr2[j] == n1) {
         apps++;
+      }
+      else 
+        pos = j;
     }
     sim += n1 * apps;
   }
@@ -61,8 +68,8 @@ int main(int argc, char* argv[]) {
     arr1.push_back(Ns[0]);
     arr2.push_back(Ns[1]);
   }
-  sort(arr1.begin(), arr1.end(), greater<int>());
-  sort(arr2.begin(), arr2.end(), greater<int>());
+  sort(arr1.begin(), arr1.end());
+  sort(arr2.begin(), arr2.end());
 
   cout << "Similarity: " << calculate_similarity(arr1, arr2) << endl;
 
